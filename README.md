@@ -145,8 +145,8 @@ docker run -v ${PWD}:/app -w /app keploy/keploy:latest keploy test
 
 ## 👤 Author
 
-**Aishwarya Vera**  
-GitHub: [@2903Aishwarya](https://github.com/2903Aishwarya)
+**Kinshuk**  
+GitHub: [Kinshuk2903](https://github.com/Kinshuk2903))
 
 ---
 
