@@ -1,98 +1,159 @@
 
-# Student API with Test Coverage
+# 📚 Student Management API
 
-This project provides a RESTful API for managing students, including full CRUD operations and comprehensive test coverage using Jest and Supertest.
-
----
-
-## 📌 API Endpoints
-
-| Method | Endpoint               | Description                 |
-|--------|------------------------|-----------------------------|
-| POST   | /api/students          | Create a new student        |
-| GET    | /api/students          | Get all students            |
-| PUT    | /api/students/:id      | Update a student by ID      |
-| DELETE | /api/students/:id      | Delete a student by ID      |
+This is a RESTful API built using **Node.js**, **Express**, and **MongoDB** to manage student records.  
+It supports full CRUD operations and is tested using **Jest** and **Keploy**.  
+API Testing is integrated into a **CI/CD pipeline using GitHub Actions**.
 
 ---
 
-## ⚙ Tech Stack
+## 🚀 Features
 
-- Node.js
-- Express.js
-- MongoDB (via Mongoose)
-- Jest (Testing)
-- Supertest (API testing)
-- mongodb-memory-server (Mock DB for testing)
+- CRUD operations for student records
+- MongoDB with Mongoose ORM
+- Swagger-based OpenAPI schema
+- AI-generated test cases using Keploy
+- API test replays via CI/CD
+- Lightweight and modular codebase
 
 ---
 
-## 🚀 How to Run
+## 📦 Tech Stack
+
+| Layer     | Technology                         |
+|-----------|------------------------------------|
+| Backend   | Node.js, Express.js                |
+| Database  | MongoDB, Mongoose                  |
+| Testing   | Jest, Supertest, mongodb-memory-server |
+| API Tests | Keploy (Record & Replay)           |
+| CI/CD     | GitHub Actions                     |
+| Docs      | Swagger (OpenAPI 3.0)              |
+
+---
+
+## 🔌 API Endpoints
+
+| Method | Endpoint               | Description             |
+|--------|------------------------|-------------------------|
+| POST   | `/api/students`        | Create a student        |
+| GET    | `/api/students`        | Get all students        |
+| PUT    | `/api/students/:id`    | Update a student        |
+| DELETE | `/api/students/:id`    | Delete a student        |
+
+---
+
+## 📄 OpenAPI Schema
+
+- ✅ Schema format: OpenAPI 3.0  
+- ✅ Generated using `swagger-jsdoc`
+
+### 🔗 Swagger UI:
+[http://localhost:5000/api-docs](http://localhost:5000/api-docs)
+
+### 🔗 Swagger JSON (for Keploy):
+[http://localhost:5000/api-docs-json](http://localhost:5000/api-docs-json)
+
+### 📄 YAML Schema:
+[`student-api.yaml`](./student-api.yaml)
+
+---
+
+## 🧪 API Testing with Keploy
+
+Keploy was used to:
+- Record cURL and OpenAPI-based test cases
+- Replay those tests during development and CI
+- Assert functionality without writing test code manually
+
+### ✅ Keploy Test Report
+
+🔗 [View Full Report on Keploy](https://app.keploy.io/api-testing/tr/dcc4e352-6b38-47fd-846a-cb191706686f?suiteId=88b4a484-0ff6-411d-a886-9e1083b3e650)
+
+### 📷 Screenshot of Test Result
+
+![Keploy Test Result](./screenshots/keploy-report.png)
+
+---
+
+## 🔁 CI/CD Pipeline with GitHub Actions
+
+This project includes an automated pipeline that runs on every push or PR to `main`. It performs:
+
+- ✅ `npm install`
+- ✅ Unit + integration tests using Jest
+- ✅ Keploy API test replay via Docker
+
+### 🔧 CI Config File:
+[`ci.yml`](.github/workflows/ci.yml)
+
+---
+
+## 🧪 Local Testing Guide
 
 ### 1. Install dependencies
 ```bash
 npm install
 ```
 
-### 2. Start the server
+### 2. Run the server
 ```bash
-npm start
+node server.js
 ```
 
-### 3. Run tests with coverage
+### 3. Run Jest tests
 ```bash
 npm test
 ```
 
----
+### 4. Run Keploy API test replay
+```bash
+keploy test
+```
 
-## 🧪 Testing Frameworks
-
-- Jest – for unit, integration & API testing
-- Supertest – for HTTP assertions on API routes
-- mongodb-memory-server – for isolated DB in test environment
-
----
-
-## 📊 Test Coverage
-
-As of the latest run:
-
-- Statements: 82.35%
-- Branches: 77.77%
-- Functions: 100%
-- Lines: 82.35%
-
-### Screenshot:
-
-![Test Coverage Screenshot](./Code%20coverage%20report%20for%20All%20files%20-%20JioSphere%2022-06-2025%2014_54_53.png)
+Or using Docker:
+```bash
+docker run -v ${PWD}:/app -w /app keploy/keploy:latest keploy test
+```
 
 ---
 
-## 📁 Project Structure
+## 📁 Folder Structure
 
 ```
+📁 your-project/
 ├── models/
 │   └── Student.js
 ├── routes/
 │   └── students.js
 ├── tests/
-│   ├── unit/
-│   │   └── studentModel.test.js
-│   ├── integration/
-│   │   └── studentIntegration.test.js
-│   └── api/
-│       └── studentAPI.test.js
-├── .env
-├── server.js
-├── package.json
-└── README.md
+│   ├── unit/studentModel.test.js
+│   ├── integration/studentIntegration.test.js
+│   └── api/studentAPI.test.js
+├── .keploy/
+│   └── testcases/           ← YAML test cases generated by Keploy
+├── .github/
+│   └── workflows/ci.yml     ← CI/CD pipeline config
+├── screenshots/
+│   └── keploy-report.png    ← Screenshot of Keploy test report
+├── student-api.yaml         ← OpenAPI schema for API testing
+├── server.js                ← Express server
+├── package.json             ← Project metadata and scripts
+└── README.md                ← You're here!
 ```
 
 ---
 
-## ✅ Notes
+## 👤 Author
 
-- API is fully functional and tested.
-- Validation errors and edge cases (404, 400) are handled.
-- Test coverage exceeds 80%, meeting the goal.
+**Aishwarya Vera**  
+GitHub: [@2903Aishwarya](https://github.com/2903Aishwarya)
+
+---
+
+## 🛠 Resources
+
+- 📘 Keploy Docs: [https://docs.keploy.io](https://docs.keploy.io)
+- 🤖 API Testing with AI: [https://app.keploy.io](https://app.keploy.io)
+- 💬 Community: [Keploy Discord](https://discord.gg/keploy)
+
+---
